@@ -1,4 +1,3 @@
-
 package com.backPortfolio.MiPortfolio.controller;
 
 import com.backPortfolio.MiPortfolio.entity.Persona;
@@ -15,27 +14,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CPersona {
-    
+
     @Autowired
-    private SPersona personaServicio;
-    
+    SPersona persoServ;
+
     @PostMapping("/new/persona")
-    public void agregarPersona(@RequestBody Persona per){
-        personaServicio.crearPersona(per);
+    public void agregarPersona(@RequestBody Persona pers) {
+        persoServ.crearPersona(pers);
     }
-    
-    @GetMapping ("/ver/personas")
+
+    @GetMapping("/ver/personas")
     @ResponseBody
-    public List<Persona> verPersonas(){
-        return personaServicio. verPersonas();
+    public List<Persona> verPersonas() {
+        return persoServ.list();
     }
-    
+
     @DeleteMapping("/delete/{id}")
-    public void borrarPersona(@PathVariable long id){
-        personaServicio.borrarPersona(id);
+    public void eliminarPersona(@PathVariable Long id) {
+        persoServ.eliminarPersona(id);
     }
-    
-
-    
-
 }

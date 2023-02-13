@@ -7,25 +7,27 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Getter @Setter
 @Entity
-public class Persona {
-
+public class Educacion {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombre;
-    private String apellido;
-    private String informacion;
-  
-    public Persona(){  
+    private String institucion;
+    private String desde;
+    private String hasta;
+    
+    public Educacion(){
     }
 
-    public Persona(String nombre, String apellido, String informacion) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.informacion = informacion;
+    public Educacion(String institucion, String desde, String hasta) {
+        this.institucion = institucion;
+        this.desde = desde;
+        this.hasta = hasta;
     }
+    
+    
 
-   
 }

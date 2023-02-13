@@ -9,23 +9,25 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-public class Persona {
+public class Proyectos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombre;
-    private String apellido;
+    private String titulo;
     private String informacion;
-  
-    public Persona(){  
+    private String desde;
+    private String hasta;
+    
+    public Proyectos(){
     }
 
-    public Persona(String nombre, String apellido, String informacion) {
-        this.nombre = nombre;
-        this.apellido = apellido;
+    public Proyectos(String titulo, String informacion, String desde, String hasta) {
+        this.titulo = titulo;
         this.informacion = informacion;
+        this.desde = desde;
+        this.hasta = hasta;
     }
-
-   
+    
+    
 }
