@@ -24,7 +24,7 @@ public class SPersona {
         return personaRepo.findAll();
     }
 
-    public EPersona findSobremi(Long id) {
+    public EPersona findPersona(Long id) {
         EPersona persona = personaRepo.findById(id).orElse(null);
         return persona;
     }

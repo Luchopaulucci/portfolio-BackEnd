@@ -1,5 +1,4 @@
 package com.backPortfolio.MiPortfolio.controller;
-
 import com.backPortfolio.MiPortfolio.entity.EPersona;
 import com.backPortfolio.MiPortfolio.service.SPersona;
 import java.util.List;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,7 +29,14 @@ public class PersonaContoller {
         return personaService.listarPersonas();
     }
     
+     @GetMapping("find/{id}")
+    @ResponseBody 
+    public EPersona findPersona(@PathVariable Long id){
+        return personaService.findPersona(id);  
+    }
+    
     @PostMapping("/new")
+    @ResponseBody
     public void crearPersona(@RequestBody EPersona persona) {
         personaService.crearPersona(persona);
     }
@@ -39,12 +46,28 @@ public class PersonaContoller {
        personaService.borrarPersona (id);
     }
     
-    @PutMapping("editar/")
-    public void modificarPersona(@RequestBody EPersona persona){
-        personaService.modificarPersona(persona);
-    }
+    @PutMapping("editar/{id}")
+    public EPersona editarPersona(@PathVariable Long id,
+            @RequestParam("nombreCompleto") String nuevoNombreCompleto ,
+            @RequestParam("urlFoto") String nuevoUrlFoto ,
+            @RequestParam("informacion") String nuevoInformacion ,
+            @RequestParam("clave") String nuevoClave,
+            @RequestParam("email") String nuevoEmail)
+            {
+                
+        EPersona persona = personaService.findPersona(id);
+        
+        persona.setNombreCompleto(nuevoNombreCompleto);
+        persona.setUrlFoto(nuevoUrlFoto);
+        persona.setInformacion(nuevoInformacion);
+        persona.setClave(nuevoClave);
+        persona.setEmail(nuevoEmail);
+         personaService.crearPersona(persona);
+       return persona;
+    } 
     
     @PostMapping("autenticacion/login")
+    @ResponseBody
     public EPersona login(@RequestBody EPersona persona) {
         return personaService.login(persona.getEmail(), persona.getClave());
     }

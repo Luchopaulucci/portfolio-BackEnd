@@ -31,6 +31,7 @@ public class EPersona {
     
     @Lob
     private String email;
+    
     @Size(min=6, max=20, message="fuera de rango")
     private String clave;
     
@@ -45,4 +46,5 @@ public class EPersona {
         this.email = email;
         this.clave = clave;
     }
+    
 }
