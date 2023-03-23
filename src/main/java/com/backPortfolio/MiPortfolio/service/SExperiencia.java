@@ -8,17 +8,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SExperiencia {
-    
+
     @Autowired
     private IExperiencia experienciaRepo;
-
-    public EExperiencia crearExperiencia(EExperiencia experiencia) {
-        return experienciaRepo.save(experiencia);
-    }
-
-    public void borrarExperiencia(Long id) {
-        experienciaRepo.deleteById(id);
-    }
 
     public List<EExperiencia> listarExperiencias() {
         return experienciaRepo.findAll();
@@ -28,8 +20,16 @@ public class SExperiencia {
         EExperiencia experiencia = experienciaRepo.findById(id).orElse(null);
         return experiencia;
     }
-    
-    public void modificarExperiencia(EExperiencia experiencia){
+
+    public EExperiencia crearExperiencia(EExperiencia experiencia) {
+        return experienciaRepo.save(experiencia);
+    }
+
+    public void borrarExperiencia(Long id) {
+        experienciaRepo.deleteById(id);
+    }
+
+    public void modificarExperiencia(EExperiencia experiencia) {
         experienciaRepo.save(experiencia);
     }
 

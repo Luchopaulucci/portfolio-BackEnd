@@ -12,19 +12,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/educacion")
+@RequestMapping("educacion/")
 @CrossOrigin(origins = "http://localhost:4200")
 public class EducacionController {
     
     @Autowired
     private SEducacion educacionService;
     
-    @GetMapping("/ver")
+    @GetMapping("ver")
     @ResponseBody
     public List<EEducacion> listarEPersonas(){
         return educacionService.listarEducacion();
@@ -36,33 +35,20 @@ public class EducacionController {
         return educacionService.findEducacion(id);  
     }
     
-    @PostMapping("/new")
+    @PostMapping("new")
     @ResponseBody
-    public void crearPersona(@RequestBody EEducacion habilidades) {
-        educacionService.crearEducacion(habilidades);
+    public void crearPersona(@RequestBody EEducacion educacion) {
+        educacionService.crearEducacion(educacion);
     }
     
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("delete/{id}")
     public void borrarPersona (@PathVariable Long id) {
        educacionService.borrarEducacion(id);
     }
     
-    @PutMapping("editar/{id}")
-    public EEducacion editarEducacion(@PathVariable Long id,
-            @RequestParam("titulo") String nuevoTitulo ,
-            @RequestParam("institucion") String nuevoInstitucion ,
-            @RequestParam("desde") String nuevoDesde ,
-            @RequestParam("hasta") String nuevoHasta)
-            {
-                
-        EEducacion educacion = educacionService.findEducacion(id);
-        
-        educacion.setTitulo(nuevoTitulo);
-        educacion.setInstitucion(nuevoInstitucion);
-        educacion.setDesde(nuevoDesde);
-        educacion.setHasta(nuevoHasta);
-         educacionService.crearEducacion(educacion);
-       return educacion;
-    } 
+    @PutMapping("update/{id}")   
+    public void editarEducacion(@RequestBody EEducacion educacion){
+        educacionService.modificarEducacion(educacion);
+    }
 
 }

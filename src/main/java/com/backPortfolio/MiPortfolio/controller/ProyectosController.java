@@ -12,19 +12,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/proyectos")
+@RequestMapping("proyectos/")
 @CrossOrigin(origins = "http://localhost:4200")
 public class ProyectosController {
     
     @Autowired
     private SProyectos proyectosService;
     
-    @GetMapping("/ver")
+    @GetMapping("ver")
     @ResponseBody
     public List<EProyectos> listarEProyectos(){
         return proyectosService.listarProtectos();
@@ -36,33 +35,20 @@ public class ProyectosController {
         return proyectosService.findProtectos(id);  
     }
     
-    @PostMapping("/new")
+    @PostMapping("new")
     @ResponseBody
     public void crearPersona(@RequestBody EProyectos proyectos) {
         proyectosService.crearProyectos(proyectos);
     }
     
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("delete/{id}")
     public void borrarPersona (@PathVariable Long id) {
        proyectosService.borrarProtectos(id);
     }
     
-    @PutMapping("editar/{id}")
-    public EProyectos editarProyectos(@PathVariable Long id,
-            @RequestParam("titulo") String nuevoTitulo ,
-            @RequestParam("informacion") String nuevoInformacion ,
-            @RequestParam("desde") String nuevoDesde ,
-            @RequestParam("hasta") String nuevoHasta)
-            {
-                
-        EProyectos proyectos = proyectosService.findProtectos(id);
-        
-        proyectos.setTitulo(nuevoTitulo);
-        proyectos.setInformacion(nuevoInformacion);
-        proyectos.setDesde(nuevoDesde);
-        proyectos.setHasta(nuevoHasta);
-        proyectosService.crearProyectos(proyectos);
-       return proyectos;
-    } 
+    @PutMapping("update/{id}")   
+    public void editarProyecto(@RequestBody EProyectos proyectos){
+        proyectosService.modificarProtectos(proyectos);
+    }
 
 }

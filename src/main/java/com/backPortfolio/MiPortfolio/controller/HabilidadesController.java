@@ -17,14 +17,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/habilidades")
+@RequestMapping("habilidades/")
 @CrossOrigin(origins = "http://localhost:4200")
 public class HabilidadesController {
     
     @Autowired
     private SHabilidades habilidadesService;
     
-    @GetMapping("/ver")
+    @GetMapping("ver")
     @ResponseBody
     public List<EHabilidades> listarEPersonas(){
         return habilidadesService.listarHabilidades();
@@ -36,34 +36,20 @@ public class HabilidadesController {
         return habilidadesService.findHabilidades(id);  
     }
     
-    @PostMapping("/new")
+    @PostMapping("new")
     @ResponseBody
     public void crearPersona(@RequestBody EHabilidades habilidades) {
         habilidadesService.crearHabilidades(habilidades);
     }
     
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("delete/{id}")
     public void borrarPersona (@PathVariable Long id) {
        habilidadesService.borrarHabilidades(id);
     }
     
     @PutMapping("update/{id}")   
-    public void editarPersona(@RequestBody EHabilidades habilidades){
+    public void editarHabilidad(@RequestBody EHabilidades habilidades){
         habilidadesService.modificarHabilidades(habilidades);
     }
     
-//    @PutMapping("editar/{id}")
-//    public EHabilidades editarExperiencia(@PathVariable Long id,
-//            @RequestParam("titulo") String nuevoTitulo ,
-//            @RequestParam("porcentaje") int nuevoPorcentaje )
-//            {
-//                
-//        EHabilidades habilidades = habilidadesService.findHabilidades(id);
-//        
-//        habilidades.setTitulo(nuevoTitulo);
-//        habilidades.setPorcentaje(nuevoPorcentaje);
-//        habilidadesService.crearHabilidades(habilidades);
-//       return habilidades;
-//    } 
-
 }

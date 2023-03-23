@@ -11,19 +11,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/persona")
+@RequestMapping("persona/")
 @CrossOrigin(origins = "http://localhost:4200")
 public class PersonaContoller {
     
     @Autowired
     private SPersona personaService;
     
-    @GetMapping("/ver")
+    @GetMapping("ver")
     @ResponseBody
     public List<EPersona> listarEPersonas(){
         return personaService.listarPersonas();
@@ -35,36 +34,21 @@ public class PersonaContoller {
         return personaService.findPersona(id);  
     }
     
-    @PostMapping("/new")
+    @PostMapping("new")
     @ResponseBody
     public void crearPersona(@RequestBody EPersona persona) {
         personaService.crearPersona(persona);
     }
     
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("delete/{id}")
     public void borrarPersona (@PathVariable Long id) {
        personaService.borrarPersona (id);
     }
     
-    @PutMapping("editar/{id}")
-    public EPersona editarPersona(@PathVariable Long id,
-            @RequestParam("nombreCompleto") String nuevoNombreCompleto ,
-            @RequestParam("urlFoto") String nuevoUrlFoto ,
-            @RequestParam("informacion") String nuevoInformacion ,
-            @RequestParam("clave") String nuevoClave,
-            @RequestParam("email") String nuevoEmail)
-            {
-                
-        EPersona persona = personaService.findPersona(id);
-        
-        persona.setNombreCompleto(nuevoNombreCompleto);
-        persona.setUrlFoto(nuevoUrlFoto);
-        persona.setInformacion(nuevoInformacion);
-        persona.setClave(nuevoClave);
-        persona.setEmail(nuevoEmail);
-         personaService.crearPersona(persona);
-       return persona;
-    } 
+    @PutMapping("update/{id}")   
+    public void editarPersona(@RequestBody EPersona persona){
+        personaService.modificarPersona(persona);
+    }
     
     @PostMapping("autenticacion/login")
     @ResponseBody
