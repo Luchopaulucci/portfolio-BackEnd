@@ -34,9 +34,9 @@ public class SPersona {
     }
 
     public EPersona login(String email, String clave){
-        List<EPersona> lisEPersona = personaRepo.findByEmailAndClave(email, clave);
-        if (!lisEPersona.isEmpty()) {
-            return lisEPersona.get(0);
+        List<EPersona> personas = personaRepo.findByEmailAndClave(email, clave);
+        if (!personas.isEmpty()) {
+            return personas.get(0);
         }
         return null;
     }

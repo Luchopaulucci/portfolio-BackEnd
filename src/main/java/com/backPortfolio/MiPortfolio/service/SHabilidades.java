@@ -29,7 +29,7 @@ public class SHabilidades {
         return habilidad;
     }
     
-    public void modificarHabilidades(EHabilidades habilidad){
+    public void modificarHabilidad(EHabilidades habilidad){
         habilidadesRepo.save(habilidad);
     }
 

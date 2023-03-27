@@ -31,18 +31,18 @@ public class ProyectosController {
     
      @GetMapping("find/{id}")
     @ResponseBody 
-    public EProyectos findPersona(@PathVariable Long id){
+    public EProyectos findProyecto(@PathVariable Long id){
         return proyectosService.findProtectos(id);  
     }
     
     @PostMapping("new")
     @ResponseBody
-    public void crearPersona(@RequestBody EProyectos proyectos) {
+    public void crearProyecto(@RequestBody EProyectos proyectos) {
         proyectosService.crearProyectos(proyectos);
     }
     
     @DeleteMapping("delete/{id}")
-    public void borrarPersona (@PathVariable Long id) {
+    public void borrarProyecto (@PathVariable Long id) {
        proyectosService.borrarProtectos(id);
     }
     

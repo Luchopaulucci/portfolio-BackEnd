@@ -14,7 +14,7 @@ public class EExperiencia {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
     
     private String titulo;
     

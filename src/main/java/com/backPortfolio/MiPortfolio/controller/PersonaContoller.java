@@ -56,5 +56,4 @@ public class PersonaContoller {
         return personaService.login(persona.getEmail(), persona.getClave());
     }
 
-    
 }

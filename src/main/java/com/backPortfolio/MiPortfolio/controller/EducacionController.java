@@ -25,24 +25,24 @@ public class EducacionController {
     
     @GetMapping("ver")
     @ResponseBody
-    public List<EEducacion> listarEPersonas(){
+    public List<EEducacion> listarEducacion(){
         return educacionService.listarEducacion();
     }
     
      @GetMapping("find/{id}")
     @ResponseBody 
-    public EEducacion findPersona(@PathVariable Long id){
+    public EEducacion findEducacion(@PathVariable Long id){
         return educacionService.findEducacion(id);  
     }
     
     @PostMapping("new")
     @ResponseBody
-    public void crearPersona(@RequestBody EEducacion educacion) {
+    public void crearEducacion(@RequestBody EEducacion educacion) {
         educacionService.crearEducacion(educacion);
     }
     
     @DeleteMapping("delete/{id}")
-    public void borrarPersona (@PathVariable Long id) {
+    public void borrarEducacion(@PathVariable Long id) {
        educacionService.borrarEducacion(id);
     }
     

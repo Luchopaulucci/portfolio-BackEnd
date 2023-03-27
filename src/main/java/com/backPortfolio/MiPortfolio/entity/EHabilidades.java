@@ -13,11 +13,11 @@ public class EHabilidades {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
     
     private String titulo;
     
-     private int porcentaje;
+    private int porcentaje;
      
      public EHabilidades(){
          

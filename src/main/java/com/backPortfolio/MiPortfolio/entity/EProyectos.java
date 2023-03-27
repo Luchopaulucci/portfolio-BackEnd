@@ -14,7 +14,7 @@ public class EProyectos {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
     
     private String titulo;
     
@@ -25,15 +25,17 @@ public class EProyectos {
     @Size(min=6, max=200, message="fuera de rango")
     private String informacion;
     
+    private String urlProyecto;
+    
     public EProyectos(){
-        
     }
 
-    public EProyectos(String titulo, String desde, String hasta, String informacion) {
+    public EProyectos(String titulo, String desde, String hasta, String informacion, String urlProyecto) {
         this.titulo = titulo;
         this.desde = desde;
         this.hasta = hasta;
         this.informacion = informacion;
+        this.urlProyecto = urlProyecto;
     }
     
 }

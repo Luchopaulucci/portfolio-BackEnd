@@ -1,9 +1,11 @@
 package com.backPortfolio.MiPortfolio.controller;
 
 import com.backPortfolio.MiPortfolio.entity.EHabilidades;
+import com.backPortfolio.MiPortfolio.service.SExperiencia;
 import com.backPortfolio.MiPortfolio.service.SHabilidades;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("habilidades/")
+@RequestMapping("/habilidades")
 @CrossOrigin(origins = "http://localhost:4200")
 public class HabilidadesController {
     
@@ -26,30 +28,30 @@ public class HabilidadesController {
     
     @GetMapping("ver")
     @ResponseBody
-    public List<EHabilidades> listarEPersonas(){
+    public List<EHabilidades> listarHabilidades(){
         return habilidadesService.listarHabilidades();
     }
     
      @GetMapping("find/{id}")
     @ResponseBody 
-    public EHabilidades findPersona(@PathVariable Long id){
+    public EHabilidades findHabilidades(@PathVariable Long id){
         return habilidadesService.findHabilidades(id);  
     }
     
     @PostMapping("new")
     @ResponseBody
-    public void crearPersona(@RequestBody EHabilidades habilidades) {
+    public void crearHabilidad(@RequestBody EHabilidades habilidades) {
         habilidadesService.crearHabilidades(habilidades);
     }
     
     @DeleteMapping("delete/{id}")
-    public void borrarPersona (@PathVariable Long id) {
+    public void borrarHabilidad (@PathVariable Long id) {
        habilidadesService.borrarHabilidades(id);
     }
     
     @PutMapping("update/{id}")   
-    public void editarHabilidad(@RequestBody EHabilidades habilidades){
-        habilidadesService.modificarHabilidades(habilidades);
+    public void editarPersona(@RequestBody EHabilidades habilidad){
+        habilidadesService.modificarHabilidad(habilidad);
     }
-    
+
 }

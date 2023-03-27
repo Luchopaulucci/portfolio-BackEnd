@@ -24,24 +24,24 @@ public class ExperienciaController {
     
     @GetMapping("ver")
     @ResponseBody
-    public List<EExperiencia> listarEPersonas(){
+    public List<EExperiencia> listarExperiencia(){
         return experienciaService.listarExperiencias();
     }
     
      @GetMapping("find/{id}")
     @ResponseBody 
-    public EExperiencia findPersona(@PathVariable Long id){
+    public EExperiencia findExperiencia(@PathVariable Long id){
         return experienciaService.findExperiencia(id);  
     }
     
     @PostMapping("new")
     @ResponseBody
-    public void crearPersona(@RequestBody EExperiencia experiencia) {
+    public void crearExperiencia(@RequestBody EExperiencia experiencia) {
         experienciaService.crearExperiencia(experiencia);
     }
     
     @DeleteMapping("delete/{id}")
-    public void borrarPersona (@PathVariable Long id) {
+    public void borrarExperiencia(@PathVariable Long id) {
        experienciaService.borrarExperiencia(id);
     }
     

@@ -6,7 +6,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
-import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +16,7 @@ public class EPersona {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
     
     private String nombreCompleto;
     
@@ -32,14 +31,15 @@ public class EPersona {
     @Lob
     private String email;
     
-    @Size(min=6, max=20, message="fuera de rango")
+    @Lob
     private String clave;
     
     public EPersona(){
         
     }
 
-    public EPersona(String nombreCompleto, String urlFoto, String informacion, String email, String clave) {
+    public EPersona(Long id, String nombreCompleto, String urlFoto, String informacion, String email, String clave) {
+        this.id = id;
         this.nombreCompleto = nombreCompleto;
         this.urlFoto = urlFoto;
         this.informacion = informacion;
