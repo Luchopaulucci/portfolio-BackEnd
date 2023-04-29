@@ -18,24 +18,24 @@ public class EProyectos {
     
     private String titulo;
     
-     private String desde;
+     private String fecha;
      
-    private String hasta;
-    
+     private String urlFotoProyecto;
+     
+     private String urlProyecto;
+     
     @Size(min=6, max=200, message="fuera de rango")
     private String informacion;
-    
-    private String urlProyecto;
     
     public EProyectos(){
     }
 
-    public EProyectos(String titulo, String desde, String hasta, String informacion, String urlProyecto) {
+    public EProyectos(String titulo, String fecha, String urlFotoProyecto, String urlProyecto, String informacion) {
         this.titulo = titulo;
-        this.desde = desde;
-        this.hasta = hasta;
-        this.informacion = informacion;
+        this.fecha = fecha;
+        this.urlFotoProyecto = urlFotoProyecto;
         this.urlProyecto = urlProyecto;
+        this.informacion = informacion;
     }
-    
+
 }

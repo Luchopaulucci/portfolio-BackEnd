@@ -17,15 +17,15 @@ public class EHabilidades {
     
     private String titulo;
     
-    private int porcentaje;
+    private String urlFotoHabilidad;
      
      public EHabilidades(){
          
      }
 
-    public EHabilidades(String titulo, int porcentaje) {
+    public EHabilidades(String titulo, String urlFotoHabilidad) {
         this.titulo = titulo;
-        this.porcentaje = porcentaje;
-    }
-     
+        this.urlFotoHabilidad = urlFotoHabilidad;
+    } 
+    
 }

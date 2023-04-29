@@ -18,22 +18,21 @@ public class EExperiencia {
     
     private String titulo;
     
-     private String desde;
+     private String fecha;
      
-    private String hasta;
+    private String urlCertificado;
     
-    @Size(min=6, max=200, message="fuera de rango")
-    private String area;
+    private String urlFotoCertificado;
     
     public EExperiencia(){
         
     }
 
-    public EExperiencia(String titulo, String desde, String hasta, String area) {
+    public EExperiencia(String titulo, String fecha, String urlCertificado, String urlFotoCertificado) {
         this.titulo = titulo;
-        this.desde = desde;
-        this.hasta = hasta;
-        this.area = area;
+        this.fecha = fecha;
+        this.urlCertificado = urlCertificado;
+        this.urlFotoCertificado = urlFotoCertificado;
     }
     
 }
